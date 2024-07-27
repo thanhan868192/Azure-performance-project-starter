@@ -24,7 +24,7 @@ config_integration.trace_integrations(['logging'])
 config_integration.trace_integrations(['requests'])
 logger = logging.getLogger(__name__)# TODO: Setup logger
 
-handler = AzureLogHandler(connection_string='')
+handler = AzureLogHandler(connection_string='InstrumentationKey=68db71a3-bf08-49ca-8edc-d03651c4a9e8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=b7f1f06c-7cce-47a7-8569-7aafda8d5f50')
 handler.setFormatter(logging.Formatter('%(traceId)s %(spandId)s %(message)s'))
 logger.addHandler(handler)
 
