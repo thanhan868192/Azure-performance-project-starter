@@ -24,34 +24,34 @@ config_integration.trace_integrations(['logging'])
 config_integration.trace_integrations(['requests'])
 logger = logging.getLogger(__name__)# TODO: Setup logger
 
-# handler = AzureLogHandler(connection_string='')
-# handler.setFormatter(logging.Formatter('%(traceId)s %(spandId)s %(message)s'))
-# logger.addHandler(handler)
+handler = AzureLogHandler(connection_string='InstrumentationKey=bd4929a1-954a-46c1-aedd-3046bb50ee1a;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=d0535ad5-7755-4112-8b2d-8b3ea1c6c748')
+handler.setFormatter(logging.Formatter('%(traceId)s %(spandId)s %(message)s'))
+logger.addHandler(handler)
 
-# logger.addHandler(AzureEventHandler(connection_string=''))
-# logger.setLevel(logging.INFO)
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=bd4929a1-954a-46c1-aedd-3046bb50ee1a;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=d0535ad5-7755-4112-8b2d-8b3ea1c6c748'))
+logger.setLevel(logging.INFO)
 
 stats = stats_module.stats
 view_manager = stats.view_manager
 
 # Metrics
-# exporter = metrics_exporter.new_metrics_exporter(
-#     enabled_standard_metrics=True,
-#     connection_string='')# TODO: Setup exporter
-# view_manager.register_exporter(exporter)
+exporter = metrics_exporter.new_metrics_exporter(
+    enabled_standard_metrics=True,
+    connection_string='InstrumentationKey=bd4929a1-954a-46c1-aedd-3046bb50ee1a;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=d0535ad5-7755-4112-8b2d-8b3ea1c6c748')# TODO: Setup exporter
+view_manager.register_exporter(exporter)
 
 # Tracing
-# tracer = Tracer(
-#     exporter=AzureExporter(connection_string=''),
-#     sampler=ProbabilitySampler(1.0)) # TODO: Setup tracer
+tracer = Tracer(
+    exporter=AzureExporter(connection_string='InstrumentationKey=bd4929a1-954a-46c1-aedd-3046bb50ee1a;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=d0535ad5-7755-4112-8b2d-8b3ea1c6c748'),
+    sampler=ProbabilitySampler(1.0)) # TODO: Setup tracer
 
 app = Flask(__name__)
 
 # Requests
-# middleware =  FlaskMiddleware(
-#     app,
-#     exporter=AzureExporter(connection_string=''),
-#     sampler=ProbabilitySampler(1.0)) # TODO: Setup flask middleware
+middleware =  FlaskMiddleware(
+    app,
+    exporter=AzureExporter(connection_string='InstrumentationKey=bd4929a1-954a-46c1-aedd-3046bb50ee1a;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/;ApplicationId=d0535ad5-7755-4112-8b2d-8b3ea1c6c748'),
+    sampler=ProbabilitySampler(1.0)) # TODO: Setup flask middleware
 
 # Load configurations from environment or config file
 app.config.from_pyfile('config_file.cfg')
