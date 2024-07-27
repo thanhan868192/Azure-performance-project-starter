@@ -9,10 +9,10 @@ from datetime import datetime
 
 # App Insights
 # TODO: Import required libraries for App Insights
-from opencensus.ext.azure.log_export import AzureLogHandler
-from opencensus.ext.azure.log_export import AzureEventHandler
-from opencensus.ext.azure import  metrics_exporter
-from opencensus.ext.azure.log_trace_exporter import AzureExporter
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+from opencensus.ext.azure.log_exporter import AzureEventHandler
+from opencensus.ext.azure import metrics_exporter
+from opencensus.ext.azure.trace_exporter import AzureExporter
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 from opencensus.stats import stats as stats_module
 from opencensus.trace.samplers import ProbabilitySampler
