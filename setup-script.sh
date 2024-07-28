@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Variables
-resourceGroup="anlt-c4-project"
-location="northeurope"
+resourceGroup="anlt16-c4-project"
+location="westus"
 osType="Ubuntu2204"
 vmssName="udacity-vmss"
 adminName="udacityadmin"
