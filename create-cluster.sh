@@ -2,8 +2,8 @@
 
 # Variables
 resourceGroup="anlt16-c4-project"
-clusterName="udacity-cluster"
-
+clusterName="udacity-cluster-v2"
+location="westus2"
 # Install aks cli
 echo "Installing AKS CLI"
 
@@ -21,6 +21,7 @@ az aks create \
 --name $clusterName \
 --node-count 1 \
 --enable-addons monitoring \
+--location $location \
 --generate-ssh-keys
 
 # For Cloud Lab users
@@ -28,6 +29,7 @@ az aks create \
 --resource-group $resourceGroup \
 --name $clusterName \
 --node-count 1 \
+--location $location \
 --generate-ssh-keys
 
 # For Cloud Lab users
